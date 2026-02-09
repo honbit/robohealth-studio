@@ -70,6 +70,12 @@ QML UI  ->  C++ ViewModels  ->  Telemetry Service (Mock or REST)
 3. REST adapter polls backend for devices/alerts/logs/metrics.
 4. ViewModel updates models; QML reacts through bindings.
 
+### Architecture Decisions & Trade-offs
+- MVVM in C++: keeps QML declarative and thin, while making state and logic testable and reusable.
+- Polling vs. push: REST polling is simple, reliable for demos, and easy to swap with streaming later.
+- Service abstraction (`TelemetryServiceBase`): enables rapid iteration and deterministic mock data without blocking UI work.
+- Export in backend: keeps UI free of heavy formatting logic; backend can evolve to real CSV/PDF later.
+
 ## Tech Stack
 - Qt 6 (QML, Widgets, Charts, Network)
 - C++17 (MVVM-style ViewModels)
