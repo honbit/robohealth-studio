@@ -1,0 +1,31 @@
+.DS_Store
+*.user
+*.pro.user
+*.pro.user.*
+*.qbs.user
+*.qbs.user.*
+*.qmlc
+*.jsc
+
+# Build
+build/
+cmake-build*/
+
+# Logs
+*.log
+
+# OS
+Thumbs.db
+
+# Rider/VS
+.idea/
+.vs/
+
+# Generated
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+
+# .NET build outputs
+simulator/**/bin/
+simulator/**/obj/

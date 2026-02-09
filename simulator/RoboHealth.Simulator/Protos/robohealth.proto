@@ -1,0 +1,67 @@
+syntax = "proto3";
+
+option csharp_namespace = "RoboHealth.Simulator";
+
+package robohealth.v1;
+
+service TelemetryService {
+  rpc ListDevices (Empty) returns (DeviceList);
+  rpc SubscribeMetrics (MetricsRequest) returns (stream MetricsSample);
+  rpc SubscribeAlerts (AlertsRequest) returns (stream AlertEvent);
+  rpc SubscribeLogs (LogsRequest) returns (stream LogEvent);
+}
+
+message Empty {}
+
+message Device {
+  string id = 1;
+  string name = 2;
+  string type = 3;
+  string status = 4;
+  int32 health = 5;
+}
+
+message DeviceList {
+  repeated Device items = 1;
+}
+
+message MetricsRequest {
+  string device_id = 1;
+  string metric = 2;
+  int32 interval_ms = 3;
+}
+
+message MetricsSample {
+  string device_id = 1;
+  string metric = 2;
+  double value = 3;
+  int64 ts_unix_ms = 4;
+}
+
+message AlertsRequest {
+  string device_id = 1;
+}
+
+message AlertEvent {
+  string id = 1;
+  string level = 2;
+  string message = 3;
+  string device_id = 4;
+  string device_name = 5;
+  int64 ts_unix_ms = 6;
+  string evidence = 7;
+  string action = 8;
+}
+
+message LogsRequest {
+  string device_id = 1;
+}
+
+message LogEvent {
+  string id = 1;
+  string level = 2;
+  string message = 3;
+  string device_id = 4;
+  string device_name = 5;
+  int64 ts_unix_ms = 6;
+}
