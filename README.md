@@ -51,6 +51,25 @@ QML UI  ->  C++ ViewModels  ->  Telemetry Service (Mock or REST)
                             .NET Simulator (REST + gRPC)
 ```
 
+### Architecture Highlights
+- Clear separation of concerns: QML for presentation, C++ ViewModels for state, services for data access.
+- Pluggable data source: `TelemetryServiceBase` allows switching between Mock and REST at runtime.
+- REST polling drives real-time updates (metrics/logs/alerts), while actions (ack/mute/connect) go back to the service.
+- Reports/diagnostics/replay can fetch from REST, with local fallbacks to keep UI responsive.
+- Export pipeline supports CSV/PDF mock generation from backend, keeping UI thin.
+
+### Key Layers
+- UI Layer (QML): pages, components, theming, and i18n state.
+- Presentation Layer (C++ ViewModels): state management, filtering, and UI-ready data shaping.
+- Integration Layer (Telemetry services): Mock generator and REST adapter.
+- Simulator Service (.NET): REST + gRPC endpoints, data synthesis, and export endpoints.
+
+### Data Flow
+1. UI triggers ViewModel actions (filters, selections, commands).
+2. ViewModel delegates to Telemetry service (Mock or REST).
+3. REST adapter polls backend for devices/alerts/logs/metrics.
+4. ViewModel updates models; QML reacts through bindings.
+
 ## Tech Stack
 - Qt 6 (QML, Widgets, Charts, Network)
 - C++17 (MVVM-style ViewModels)
