@@ -17,9 +17,30 @@ RoboHealth Studio is a Qt 6 desktop app for monitoring industrial robots and edg
 - Reports with CSV + mock PDF export
 - REST + gRPC simulator to generate realistic data
 
-## Screenshot
+## Screenshots
 
-![Dashboard](docs/screenshots/dashboard.png)
+### Overview
+![Overview](docs/screenshots/overview.png)
+
+### Core Modules
+
+| Devices | Alerts |
+| --- | --- |
+| ![Devices](docs/screenshots/devices.png) | ![Alerts](docs/screenshots/alerts.png) |
+
+| Logs | Reports |
+| --- | --- |
+| ![Logs](docs/screenshots/logs.png) | ![Reports](docs/screenshots/reports.png) |
+
+| Diagnostics | Replay |
+| --- | --- |
+| ![Diagnostics](docs/screenshots/diagnostics.png) | ![Replay](docs/screenshots/replay.png) |
+
+### Settings (Light / Dark)
+
+| Light | Dark |
+| --- | --- |
+| ![Settings Light](docs/screenshots/settings-light.png) | ![Settings Dark](docs/screenshots/settings-dark.png) |
 
 ## Architecture
 
