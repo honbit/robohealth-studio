@@ -76,6 +76,12 @@ QML UI  ->  C++ ViewModels  ->  Telemetry Service (Mock or REST)
 - Service abstraction (`TelemetryServiceBase`): enables rapid iteration and deterministic mock data without blocking UI work.
 - Export in backend: keeps UI free of heavy formatting logic; backend can evolve to real CSV/PDF later.
 
+### Scalability, Performance, and Testing
+- Scalability: service boundary makes it easy to replace simulator with real telemetry (REST/gRPC/streaming).
+- Performance: QSortFilterProxyModel-based filtering keeps UI responsive with large lists.
+- UI rendering: lightweight QML components + deferred detail panels avoid unnecessary recomputation.
+- Testing: ViewModels are isolated from UI and can be unit-tested with mock services.
+
 ## Tech Stack
 - Qt 6 (QML, Widgets, Charts, Network)
 - C++17 (MVVM-style ViewModels)
